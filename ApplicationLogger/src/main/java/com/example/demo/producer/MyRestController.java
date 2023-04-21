@@ -27,7 +27,9 @@ public class MyRestController {
 	
 	@PostMapping("/invia")
 	public void invia() {
-		
-		log.info("Sono rest Controller provo ad inviare un messaggio",null);
+		log.info("provo ad inviare un messaggio", null);
+		log.error("provo ad inviare un messaggio di errore","idError","primo messaggio di errore");
+		log.debug("provo ad inviare un messaggio di debug", null);
+		log.warning("provo ad inviare un messaggio di warning", "idWarning");
 	}
 }

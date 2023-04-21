@@ -1,5 +1,7 @@
 package com.example.demo.producer;
 
+import java.util.logging.Logger;
+
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,8 @@ import com.example.demo.consumer.LogMessage;
 
 @Service
 public class RabbitProducer {
+	private static final Logger logNormale = Logger.getLogger("RabbitProducer");
+	
 	@Value("${rabbitmq.exchange.name}")
     private String exchange;
 
@@ -21,7 +25,7 @@ public class RabbitProducer {
     }
     
     public void invia(LogMessage log) {
-    	System.out.println("-------------sono il producer, provo ad inviare il messaggio ");
+    	logNormale.info("Invio il messaggio");
     	rabbitTemplate.convertAndSend(exchange, routingKey, log.toString());
     }
 	
